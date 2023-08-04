@@ -10,3 +10,5 @@ Connect at
 ```
 nc socket.cryptohack.org 13371
 ```
+## Solution
+
