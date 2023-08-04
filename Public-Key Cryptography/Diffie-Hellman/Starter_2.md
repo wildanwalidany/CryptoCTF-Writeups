@@ -33,6 +33,7 @@ g^6 mod 7 = 1
 
 From the above calculations, we find that for g = 3, all the powers from 1 to 6 produce all non-zero elements {1, 2, 3, 4, 5, 6} of F7 in a distinct order. Therefore, the element 3 is a primitive root (generator) in the finite field F7.
 
+The script:
 ```python
 def is_primitive_root(g, p, factors):
     for factor in factors:
@@ -79,5 +80,6 @@ if __name__ == "__main__":
 
 Output:
 ```console
-569
+Enter a prime number (p): 28151
+The primitive root of 28151 is: 7.
 ```
