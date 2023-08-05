@@ -46,10 +46,70 @@ In emoji format it should look like this:
 
 `🎈9🎈3🍕4🎈🎈🍕b ` ended in `🍕d`
 
-
-```console
-
+We find the same pattern in:
 ```
+🎈🐳🎈🌸🍕🎉🎈🎈🍕🎸🎈🎈🍕🎁🎈🌼🍕🦋🍕🌼🎈🌼🎈⚡🎈🌸🍕🐳🌼🌺🎈🦋🎈⚡🎈🦋🎈🚀🍕🐳🍕🌸🎈🐳🍕🌸🌼🌺🎈🐳🍕🌸🌼🌺🍕🎁🎈🌼🎈🦋🎈🚀🎈🚀🍕🐳🌼🌺🎈🎈🍕🌼🎈⚡🌼🌺🍕🎁🎈🐳🎈🍕🎈🌞🍕🎉🍕🍔
+```
+From this sequence, we get more clues:
+`🐳: 9`, `🌸: 3`, `🎉: 4`, `🎸: b` (very likely)
+`🍔: d` (assumption)
+We also notice that in the suspected emoji above, there are 4 occurrences of the 🌼🌺 pattern, which corresponds to the character `_`, or `5f`.
+So, `🌼: 5` and `🌺: f`. 
 
+Now, we can manually map the remaining emojis to form the flag.
+Script:
+
+```python
+import re
+
+def convert_emojis_to_hex(text):
+    # Define a dictionary to map emojis to hexadecimal digits
+    emoji_to_hex = {
+        "🐶": "0",
+        "🦋": "1",  ##
+        "🎁": "2",  ##
+        "🌸": "3",  ###
+        "🎉": "4",  ###
+        "🌼": "5",  ##
+        "🎈": "6",  ###
+        "🍕": "7",  ###
+        "🌞": "8",  ##
+        "🐳": "9",  ###
+        "🍦": "a",
+        "🎸": "b",  ###
+        "🚀": "c",  ##
+        "🍔": "d",  ###
+        "⚡": "e",  ##
+        "🌺": "f",  ##
+    }
+
+    # Use regex to extract emojis from the input text
+    emoji_pattern = re.compile(r"[^\w\s,]")
+    emojis = emoji_pattern.findall(text)
+
+    # Convert emojis back to hexadecimal digits
+    hex_string = "".join(emoji_to_hex[emoji] for emoji in emojis)
+
+    return hex_string
+                   #  i    c    t    f    {    f    r    e    q    u    e    n    c   y     _    a    n    a    l    y    s    i    s
+def main():        # 6 9  6 3  7  4 6 6 7  b  6 6  7 2  6 5  7 1  7 5  6 5  6 e  6 f  7 9  5 f  6 1
+    input_emojis = "🎈🐳🎈🌸🍕🎉🎈🎈🍕🎸🎈🎈🍕🎁🎈🌼🍕🦋🍕🌼🎈🌼🎈⚡🎈🌸🍕🐳🌼🌺🎈🦋🎈⚡🎈🦋🎈🚀🍕🐳🍕🌸🎈🐳🍕🌸🌼🌺🎈🐳🍕🌸🌼🌺🍕🎁🎈🌼🎈🦋🎈🚀🎈🚀🍕🐳🌼🌺🎈🎈🍕🌼🎈⚡🌼🌺🍕🎁🎈🐳🎈🍕🎈🌞🍕🎉🍕🍔"
+    hex_string = convert_emojis_to_hex(input_emojis)
+
+    print("Recovered hexadecimal string:")
+    print(hex_string)
+
+    # Convert hexadecimal to bytes
+    bytes_data = bytes.fromhex(hex_string)
+
+    # Decode bytes to a string using utf-8 encoding
+    decoded_string = bytes_data.decode('utf-8')
+
+    print(decoded_string)
+
+
+if __name__ == "__main__":
+    main()
+```
 
 **Flag:** `ictf{frequency_analysis_is_really_fun_right}`
