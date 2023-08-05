@@ -33,11 +33,12 @@ We know that the flag has a format similar to `ictf{abc_defghijklmn_opqrs_tuvwxy
 
 We can use a tool like [dcode](https://www.dcode.fr/frequency-analysis) to analyze the characters frequency.
 `hex frequency:`
+
 ![fa_1](images/fa_1.png)
 
 `out.txt emoji frequency:`
-![fa_2](images/fa_2.png)
 
+![fa_2](images/fa_2.png)
 
 Based on the comparison. We can assume that `🎈: 6` and 🍕": "7". To find the flag location in out.txt, we look for the pattern ictf{ which corresponds to 696374667b and the pattern } which corresponds to 7d. 
 In emoji format it should look like this:
