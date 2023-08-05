@@ -32,6 +32,7 @@ We know that the flag has a format similar to `ictf{abc_defghijklmn_opqrs_tuvwxy
 `696374667b6162635f6465666768696a6b6c6d6e5f6f707172735f7475767778797a7d`
 
 We can use a tool like [dcode](https://www.dcode.fr/frequency-analysis) to analyze the characters frequency.
+
 `hex frequency:`
 
 ![fa_1](images/fa_1.png)
@@ -40,7 +41,7 @@ We can use a tool like [dcode](https://www.dcode.fr/frequency-analysis) to analy
 
 ![fa_2](images/fa_2.png)
 
-Based on the comparison. We can assume that `🎈: 6` and 🍕": "7". To find the flag location in out.txt, we look for the pattern ictf{ which corresponds to 696374667b and the pattern } which corresponds to 7d. 
+Based on the comparison. We can assume that `🎈: 6` and `🍕: 7`. To find the flag location in `out.txt`, we look for the pattern `ictf{` which corresponds to `696374667b` and the pattern `}` which corresponds to `7d`. 
 In emoji format it should look like this:
 
 `🎈9🎈3🍕4🎈🎈🍕b ` ended in `🍕d`
@@ -51,4 +52,4 @@ In emoji format it should look like this:
 ```
 
 
-Flag: `ictf{frequency_analysis_is_really_fun_right}`
+**Flag:** `ictf{frequency_analysis_is_really_fun_right}`
