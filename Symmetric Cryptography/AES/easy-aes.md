@@ -65,7 +65,19 @@ while True:
 print('bye.')
 ```
 ## Solution
-From what we see here, the gen.py program opens text.txt file that contains the flag, converts it to hexadecimal, and replaces each hexadecimal digit with a randomly shuffled emoji. The encoded text is then saved in `out.txt`. With this information, we can attempt to reverse the process using `frequency analysis`.
+The provided program performs encryption using AES (Advanced Encryption Standard) in OFB (Output Feedback) mode for encrypting the plaintext. The program also has options to obtain the `encrypted secret` and retrieve the `flag.txt` using the decrypted secret. 
+
+Based on the OFB algorithm, 
+![ofb_1](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/OFB_encryption.svg/601px-OFB_encryption.svg.png)
+![ofb_2](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/OFB_decryption.svg/601px-OFB_decryption.svg.png)
+
+The encryption and decryption processes do not depend on the plaintext. Since the `key` and `IV` is static, with both encryption and decryption based on AES in OFB mode and the XOR operation between the plaintext and keystream being the only remaining step, the program becomes susceptible to [Chosen-plaintext attack](https://en.wikipedia.org/wiki/Chosen-plaintext_attack).
+
+The attack can be performed with the `XOR` properties,
+![xor](https://760948859-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MX1bWRlBzHpEPe1TYDD%2Fuploads%2Fgit-blob-2fdc9a4918ec0b97d6ae933e58ee5edc11997705%2F2d728934472f488983e05516ffd1151a.png?alt=media)
+
+This is the same as [one-time pad key reuse](https://crypto.stackexchange.com/questions/59/taking-advantage-of-one-time-pad-key-reuse). If `c1` and `c2` are two ciphertexts obtained by `XOR`ing two plaintexts `p1` and `p2` with the same key, then `c1 ⊕ c2 = p1 ⊕ p2`. Furthermore, `p1 ⊕ p2 ⊕ p2 = p1`, as XORing a value with itself results in 0.
+Using this scenario, we can retrieve the `secret`.
 
 `script`:
 ```python
