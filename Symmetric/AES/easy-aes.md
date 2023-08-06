@@ -68,8 +68,9 @@ print('bye.')
 The provided program performs encryption using AES (Advanced Encryption Standard) in OFB (Output Feedback) mode for encrypting the plaintext. The program also has options to obtain the `encrypted secret` and retrieve the `flag.txt` using the decrypted secret. 
 
 Based on the OFB algorithm, 
-![ofb_1](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/OFB_encryption.svg/601px-OFB_encryption.svg.png)
-![ofb_2](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/OFB_decryption.svg/601px-OFB_decryption.svg.png)
+
+![ofb_1](https://upload.wikimedia.org/wikipedia/commons/a/a9/Ofb_encryption.png)
+![ofb_2](https://upload.wikimedia.org/wikipedia/commons/8/82/Ofb_decryption.png)
 
 The encryption and decryption processes do not depend on the plaintext. Since the `key` and `IV` is static, with both encryption and decryption based on AES in OFB mode and the XOR operation between the plaintext and keystream being the only remaining step, the program becomes susceptible to [Chosen-plaintext attack](https://en.wikipedia.org/wiki/Chosen-plaintext_attack).
 
