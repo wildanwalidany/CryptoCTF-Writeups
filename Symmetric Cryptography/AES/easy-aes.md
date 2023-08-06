@@ -65,5 +65,40 @@ while True:
 print('bye.')
 ```
 ## Solution
-not yet
 From what we see here, the gen.py program opens text.txt file that contains the flag, converts it to hexadecimal, and replaces each hexadecimal digit with a randomly shuffled emoji. The encoded text is then saved in `out.txt`. With this information, we can attempt to reverse the process using `frequency analysis`.
+
+`script`:
+```python
+from pwn import *
+import os
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Util.number import bytes_to_long, long_to_bytes
+
+r = remote("ctf-gemastik.ub.ac.id", 10002) # (host, port)
+
+# create custom 128-bytes plaintext
+t = os.urandom(128)
+p1 = str(bytes_to_long(t))
+
+# custom ciphertext
+r.sendlineafter(b'> ', b'1')
+r.sendlineafter(b'plaintext = ', p1.encode())
+r.recvuntil(b"ciphertext = ")
+c1 = int(r.recvline().strip())
+
+# get the secret_ciphertext
+r.sendlineafter(b'> ', b'2')
+r.recvuntil(b"ciphertext = ")
+c2 = int(r.recvline().strip())
+
+# get the secret
+p2 = str(bytes_to_long(unpad(long_to_bytes(bytes_to_long(pad(t, AES.block_size)) ^ c1 ^ c2), AES.block_size)))
+
+# get the flag
+r.sendlineafter(b'> ', b'3')
+r.sendlineafter(b'secret: ', p2.encode())
+r.interactive()
+```
+
+**flag:** `gemastik{crypto_easy-aes_66ed4a79865d667a1981763e84019607d3f2c0a69e7cb97f}`
