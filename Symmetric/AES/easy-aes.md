@@ -1,17 +1,18 @@
-
 # easy-aes
+
 Platform: Gemastik 2023
 
 ## Description
+
 > Attack on AES OFB
+>*(Author: prajnapras19)*
 
-Author: prajnapras19
-
-```
+```bash
 nc ctf-gemastik.ub.ac.id 10002
 ```
 
 `chall.py`:
+
 ```python
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
@@ -64,10 +65,12 @@ while True:
 
 print('bye.')
 ```
-## Solution
-The provided program performs encryption using AES (Advanced Encryption Standard) in OFB (Output Feedback) mode for encrypting the plaintext. The program also has options to obtain the `encrypted secret` and retrieve the `flag.txt` using the decrypted secret. 
 
-Based on the OFB algorithm, 
+## Solution
+
+The provided program performs encryption using AES (Advanced Encryption Standard) in OFB (Output Feedback) mode for encrypting the plaintext. The program also has options to obtain the `encrypted secret` and retrieve the `flag.txt` using the decrypted secret.
+
+Based on the OFB algorithm,
 
 ![ofb_1](https://upload.wikimedia.org/wikipedia/commons/a/a9/Ofb_encryption.png)
 ![ofb_2](https://upload.wikimedia.org/wikipedia/commons/8/82/Ofb_decryption.png)
@@ -81,6 +84,7 @@ This is the same as [one-time pad key reuse](https://crypto.stackexchange.com/qu
 Using this scenario, we can retrieve the `secret`.
 
 `script`:
+
 ```python
 from pwn import *
 import os
