@@ -1,18 +1,22 @@
 # Parameter Injection
+
 Platform: Cryptohack
 
-## Description
 > Now it's time to calculate a shared secret using data received from your friend Alice. Like before, we will be using the NIST parameters:
 > You're in a position to not only intercept Alice and Bob's DH key exchange, but also rewrite their messages. Think about how you can play with the DH equation that they calculate, and therefore sidestep the need to crack any discrete logarithm problem.
 > Use the script from "Diffie-Hellman Starter 5" to decrypt the flag once you've recovered the shared secret.
 
-Connect at 
-```
+Connect at
+
+```bash
 nc socket.cryptohack.org 13371
 ```
+
 ## Solution
+
 The normal scenario of this protocol is:
-```
+
+```console
 A->B
 Send "p", "g", "A"
 B->A
@@ -22,11 +26,13 @@ Send AES-CBC(SHA1(s)[0:16], iv=random(16), msg) + iv
 B->A
 Send AES-CBC(SHA1(s)[0:16], iv=random(16), A's msg) + iv
 ```
+
 We can manipulate the desired Key Exchange value using `MITM Attack`
 Based on modulo arithmetic properties `a^b (mod a) = 0`, we replace the value of `A` and `B` to the value of `p`. So the Shared Key can be calculated using `K = p^a (mod p) = 0`.
 
 MITM Scenario:
-```
+
+```console
 A->M
 Send "p", "g", "A"
 M->B
@@ -55,8 +61,10 @@ Send to Alice: {"B": "0xffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e08
 Intercepted from Alice: {"iv": "833bb0f041c931e47cf0fa36c3aead6f", "encrypted_flag": "e59bf709e87e911ae04f57e68a6ebc324aada43cedbf7d8a46a5fe371785f352"}
 ```
 
-Use the [decrypt](https://github.com/wildanwalidany/CryptoCTF-Writeups/blob/main/Public-Key%20Cryptography/Diffie-Hellman/Starter_5.md) from Starter 5 to decrypt the encrypted_flag
-The flag is `crypto{n1c3_0n3_m4ll0ry!!!!!!!!}`.
+Use the [decrypt](https://github.com/wildanwalidany/CryptoCTF-Writeups/blob/main/Public-Key%20Cryptography/Diffie-Hellman/Starter_5.md) from Starter 5 to decrypt the encrypted_flag.
+
+**flag:** `crypto{n1c3_0n3_m4ll0ry!!!!!!!!}`
 
 ## References
-https://cryptopals.com/sets/5/challenges/34
+
+<https://cryptopals.com/sets/5/challenges/34>
