@@ -41,20 +41,22 @@ We can use a tool like [dcode](https://www.dcode.fr/frequency-analysis) to analy
 
 ![fa_2](images/fa_2.png)
 
-Based on the comparison. We can assume that `🎈: 6` and `🍕: 7`. To find the flag location in `out.txt`, we look for the pattern `ictf{` which corresponds to `696374667b` and the pattern `}` which corresponds to `7d`. 
+Based on the comparison. We can assume that `🎈: 6` and `🍕: 7`. To find the flag location in `out.txt`, we look for the pattern `ictf{` which corresponds to `696374667b` and the pattern `}` which corresponds to `7d`.
 In emoji format it should look like this:
 
-`🎈9🎈3🍕4🎈🎈🍕b ` ended in `🍕d`
+`🎈9🎈3🍕4🎈🎈🍕b` ended in `🍕d`
 
 We find the same pattern in:
-```
+
+```text
 🎈🐳🎈🌸🍕🎉🎈🎈🍕🎸🎈🎈🍕🎁🎈🌼🍕🦋🍕🌼🎈🌼🎈⚡🎈🌸🍕🐳🌼🌺🎈🦋🎈⚡🎈🦋🎈🚀🍕🐳🍕🌸🎈🐳🍕🌸🌼🌺🎈🐳🍕🌸🌼🌺🍕🎁🎈🌼🎈🦋🎈🚀🎈🚀🍕🐳🌼🌺🎈🎈🍕🌼🎈⚡🌼🌺🍕🎁🎈🐳🎈🍕🎈🌞🍕🎉🍕🍔
 ```
+
 From this sequence, we get more clues:
 `🐳: 9`, `🌸: 3`, `🎉: 4`, `🎸: b` (very likely)
 `🍔: d` (assumption)
 We also notice that in the suspected emoji above, there are 4 occurrences of the 🌼🌺 pattern, which corresponds to the character `_`, or `5f`.
-So, `🌼: 5` and `🌺: f`. 
+So, `🌼: 5` and `🌺: f`.
 
 Now, we can manually map the remaining emojis to form the flag.
 Script:
