@@ -1,10 +1,13 @@
 # Starter 2
+
 Platform: Cryptohack
 
 ## Description
+
 > Every element of a finite field Fp can be used to make a subgroup H under repeated action of multiplication. In other words, for an element g: H = {g, g^2, g^3, ...} A primitive element of Fp is an element whose subgroup H = Fp, i.e., every element of Fp, can be written as g^n mod p for some integer n. Because of this, primitive elements are sometimes called generators of the finite field. For the finite field with p = 28151 find the smallest element g which is a primitive element of Fp.
-> 
+
 ## Solution
+
 The Primitive Root Theorem states:
 
 For every prime number p, there exists at least one integer g (1 < g < p) such that the powers of g (g, g^2, g^3, ..., g^(p-1)) cover all the non-zero residues modulo p.
@@ -15,25 +18,30 @@ For example, To find a primitive root (generator) in the finite field F7, we nee
 
 For g = 2:
 
+```console
 g^1 mod 7 = 2
 g^2 mod 7 = 4
 g^3 mod 7 = 1
 g^4 mod 7 = 2 (repeats)
 g^5 mod 7 = 4 (repeats)
 g^6 mod 7 = 1 (repeats)
+```
 
 For g = 3:
 
+```console
 g^1 mod 7 = 3
 g^2 mod 7 = 2
 g^3 mod 7 = 6
 g^4 mod 7 = 4
 g^5 mod 7 = 5
 g^6 mod 7 = 1
+```
 
 From the above calculations, we find that for g = 3, all the powers from 1 to 6 produce all non-zero elements {1, 2, 3, 4, 5, 6} of F7 in a distinct order. Therefore, the element 3 is a primitive root (generator) in the finite field F7.
 
 The script:
+
 ```python
 def is_primitive_root(g, p, factors):
     for factor in factors:
@@ -79,6 +87,7 @@ if __name__ == "__main__":
 ```
 
 Output:
+
 ```console
 Enter a prime number (p): 28151
 The primitive root of 28151 is: 7.
