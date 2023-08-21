@@ -44,6 +44,12 @@ def encrypt_flag():
 
 ## Solution
 
+The provided program performs allows us to encrypt a flag using `AES-CBC` mode and decrypt a ciphertext using `AES-ECB` mode.
+
+Based on the `CBC` and `ECB` algorithm,
+![CBC-Encryption](https://upload.wikimedia.org/wikipedia/commons/d/d3/Cbc_encryption.png)
+![ECB-Decryption](https://upload.wikimedia.org/wikipedia/commons/6/66/Ecb_decryption.png)
+
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
 
 **flag:** `flag`
