@@ -64,13 +64,10 @@ ciphertext = iv.hex() + encrypted.hex()
 It can be seen that the ciphertext is concenated with the `IV`. From this information we can extract the `IV` and XOR it to the `ECB` decrypted cipher block to reverse the `CBC` encryption or mimic the `CBC` decryption. From the challenge we know the length of ciphertext is 48 bytes and AES block size is 16 bytes. So the first block is `IV` and the remaining 2 blocks is the actual ciphertext. The scenario to obtain the flag is like this:
 
 ```math
-\[
 \begin{align*}
 flagBlock_{0} &= \text{decrypt}(cipherBlock_{0}) \oplus IV \\
 flagBlock_{1} &= \text{decrypt}(cipherBlock_{1}) \oplus cipherBlock_{0}
 \end{align*}
-\]
-
 ```
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
 
