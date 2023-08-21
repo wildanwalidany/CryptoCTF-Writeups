@@ -66,9 +66,40 @@ It can be seen that the ciphertext is concenated with the `IV`. From this inform
 ```math
 \begin{align*}
 flagBlock_{0} &= \text{decrypt}(cipherBlock_{0}) \oplus IV \\
-flagBlock_{1} &= \text{decrypt}(cipherBlock_{1}) \oplus cipherBlock_{0}
+flagBlock_{1} &= \text{decrypt}(cipherBlock_{1}) \oplus cipherBlock_{0} \\
+flag &= flagBlock_{0} + flagBlock_{1}
 \end{align*}
 ```
-<!-- This code section is a work in progress - TODO: Update with the solucion -->
 
-**flag:** `flag`
+`solver`:
+
+```python
+import requests
+from Crypto.Util.strxor import strxor
+
+def decrypt(byte_string):
+    url = "http://aes.cryptohack.org/ecbcbcwtf/decrypt/"
+    url += byte_string.hex()
+    url += "/"
+    r = requests.get(url)
+    js = r.json()
+    return bytes.fromhex(js["plaintext"])
+
+def encrypt_flag():
+    url = "http://aes.cryptohack.org/ecbcbcwtf/encrypt_flag/"
+    r = requests.get(url)
+    js = r.json()
+    return bytes.fromhex(js["ciphertext"])
+
+enc = encrypt_flag()
+
+iv = enc[:16]
+block1 = enc[16:32]
+block2 = enc[32:48]
+
+decrypt_block1 = strxor(decrypt(block1), iv)
+decrypt_block2 = strxor(decrypt(block2), block1)
+print(decrypt_block1 + decrypt_block2)
+```
+
+**flag:** `crypto{3cb_5uck5_4v01d_17_!!!!!}`
