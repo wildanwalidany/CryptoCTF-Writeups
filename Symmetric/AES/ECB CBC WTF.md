@@ -65,6 +65,7 @@ It can be seen that the ciphertext is concenated with the `IV`. From this inform
 
 ```math
 flagBlock_{0} = decrypt(cipherBlock_{0}) \oplus IV
+
 flagBlock_{1} = decrypt(cipherBlock_{1}) \oplus cipherBlock_{0}
 ```
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
