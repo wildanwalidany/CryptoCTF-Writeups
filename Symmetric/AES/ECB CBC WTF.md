@@ -1,36 +1,45 @@
-# easy-aes
+# ECB CBC WTF
 
-Platform: Gemastik 2023
+Platform: Cryptohack
 
 ## Description
 
-> ECB is the most simple mode, with each plaintext block encrypted entirely independently. In this case, your input is prepended to the secret flag and encrypted and that's it. We don't even provide a decrypt function. Perhaps you don't need a padding oracle when you have an "ECB oracle"?
+> Here you can encrypt in CBC but only decrypt in ECB. That shouldn't be a weakness because they're different modes... right?
 
-`play at:` [ecb_oracle](https://aes.cryptohack.org/ecb_oracle)
+`play at:` [ecbcbcwtf](https://aes.cryptohack.org/ecbcbcwtf)
 
 `source:`
 
 ```python
 from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
 
 
 KEY = ?
 FLAG = ?
 
 
-@chal.route('/ecb_oracle/encrypt/<plaintext>/')
-def encrypt(plaintext):
-    plaintext = bytes.fromhex(plaintext)
+@chal.route('/ecbcbcwtf/decrypt/<ciphertext>/')
+def decrypt(ciphertext):
+    ciphertext = bytes.fromhex(ciphertext)
 
-    padded = pad(plaintext + FLAG.encode(), 16)
     cipher = AES.new(KEY, AES.MODE_ECB)
     try:
-        encrypted = cipher.encrypt(padded)
+        decrypted = cipher.decrypt(ciphertext)
     except ValueError as e:
         return {"error": str(e)}
 
-    return {"ciphertext": encrypted.hex()}
+    return {"plaintext": decrypted.hex()}
+
+
+@chal.route('/ecbcbcwtf/encrypt_flag/')
+def encrypt_flag():
+    iv = os.urandom(16)
+
+    cipher = AES.new(KEY, AES.MODE_CBC, iv)
+    encrypted = cipher.encrypt(FLAG.encode())
+    ciphertext = iv.hex() + encrypted.hex()
+
+    return {"ciphertext": ciphertext}
 ```
 
 ## Solution
