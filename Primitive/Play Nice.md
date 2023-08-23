@@ -75,6 +75,24 @@ if resp and resp == msg:
 
 ## Solution
 
-<!-- This code section is a work in progress - TODO: Update with the solucion -->
+The provided program implements the Playfair cipher, which is a classical substitution cipher that operates on pairs of letters in a matrix. At the bottom of program we also see the hint provided about Playfair cipher.
+When we connect to the service, we got the following:
 
-**flag:** `flag`
+```bash
+meldstorm-picoctf@webshell:~$ nc mercury.picoctf.net 19354
+Here is the alphabet: n5vgru7ehz1klja8s9340m2wcxbd6pqfitoy
+Here is the encrypted message: hnjm2e4t51v16gsg104i4oi9wmrqli
+What is the plaintext message? 
+```
+
+We can easily get the plaintext with [dcode](https://www.dcode.fr/playfair-cipher). The grid used is 6x6 because the given alphabet has 36 characters.
+![playfair](images/playfair.png)
+Convert uppercase characters to lowercase first and pass it to the service get the flag.
+
+```bash
+┌──(meld㉿meld)-[~]
+└─$ echo "WD9BUKBSPDTJ7SKD3KL8D6OA3F03G0" | tr '[:upper:]' '[:lower:]'
+wd9bukbspdtj7skd3kl8d6oa3f03g0
+```
+
+**flag:** `dbc8bf9bae7152d35d3c200c46a0fa30`
