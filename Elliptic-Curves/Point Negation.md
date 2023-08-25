@@ -20,6 +20,5 @@ $-y_{P}$ is additive inverse of $y_{P}$ which satisfies $y_{P}+(-y_{P})=0$
 
 Additive Inverse = (-yp) % p = (-10) % 17 = 7 # not yet
 
-
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
 **flag:** `flag`
