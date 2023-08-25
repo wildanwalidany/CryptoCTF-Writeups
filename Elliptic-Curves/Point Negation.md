@@ -1,6 +1,6 @@
-# easy-aes
+# Point Negation
 
-Platform: Point Negation
+Platform: Cryptohack
 
 ## Description
 
@@ -10,6 +10,9 @@ Platform: Point Negation
 > Resources: [The Animated Elliptic Curve: Visualizing Elliptic Curve Cryptography](https://curves.xargs.org/)
 
 ## Solution
+
+In Elliptic Curve Addition Algorithm, there is case:
+If \(x_1 = x_2\) and \(y_1 = -y_2\), then \(P_1 + P_2 = \mathcal{O}\)
 
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
 **flag:** `flag`
