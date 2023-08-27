@@ -18,7 +18,7 @@ So, $Q(x,y)=Q(x_{P},-y_{P})$. In other word, $Q=-P$
 
 $-y_{P}$ is additive inverse of $y_{P}$ which satisfies $y_{P}+(-y_{P})=0$
 
-Additive Inverse = (-yp) % p = (-10) % 17 = 7 # not yet
+Additive Inverse = (-y_p) \mod p = (-6936) \mod 9739 = 9739 - 6936 = 2803
 
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
-**flag:** `flag`
+**flag:** `crypto{8045,2803}`
