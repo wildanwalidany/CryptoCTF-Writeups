@@ -16,6 +16,7 @@ The Algorithm for the addition of two points in ECC follows these rules:
 So we just need to implement the algorithm.
 
 `addition.py`:
+
 ```python
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
 ```
