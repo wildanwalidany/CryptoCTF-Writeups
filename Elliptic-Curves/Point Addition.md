@@ -10,5 +10,14 @@ Platform: Cryptohack
 
 ## Solution
 
+The Algorithm for the addition of two points in ECC follows these rules:
+![ECC_addition](https://github.com/wildanwalidany/CryptoCTF-Writeups/assets/74038077/afc555fa-1b4a-45c3-8aed-ea06210bf4f4)
+
+So we just need to implement the algorithm.
+
+`addition.py`:
+```python
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
+```
+
 **flag:** `flag`
