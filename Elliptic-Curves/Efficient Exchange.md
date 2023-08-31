@@ -1,4 +1,4 @@
-# Curves and Logs
+# Efficient Exchange
 
 Platform: Cryptohack
 
