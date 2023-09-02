@@ -10,11 +10,13 @@ Platform: Cryptohack
 
 ## Solution
 
-`multiplication.py`:
-The Algorithm for efficient scalar multiplication in ECC follows these algorithm:
-![ECC_addition](https://github.com/wildanwalidany/CryptoCTF-Writeups/assets/74038077/afc555fa-1b4a-45c3-8aed-ea06210bf4f4)
+The Algorithm for efficient scalar multiplication in Elliptic Curve follows these algorithm:
+![image](https://github.com/wildanwalidany/CryptoCTF-Writeups/assets/74038077/e601e2df-e95b-4e89-8614-f0a7e039dec3)
+
 
 So we just need to implement the algorithm.
+
+`multiplication.py`:
 
 ```python
 def pt_add(p, q, E):
@@ -59,6 +61,5 @@ if __name__ == '__main__':
     x, y = Q
     print(f"Q(x, y) = ({x}, {y})")
 ```
-<!-- This code section is a work in progress - TODO: Update with the solucion -->
 
 **flag:** `crypto{9467,2742}`
