@@ -13,7 +13,6 @@ Platform: Cryptohack
 The Algorithm for efficient scalar multiplication in Elliptic Curve follows these algorithm:
 ![image](https://github.com/wildanwalidany/CryptoCTF-Writeups/assets/74038077/e601e2df-e95b-4e89-8614-f0a7e039dec3)
 
-
 So we just need to implement the algorithm.
 
 `multiplication.py`:
