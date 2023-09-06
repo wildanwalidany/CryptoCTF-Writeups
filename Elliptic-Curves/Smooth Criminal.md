@@ -141,6 +141,52 @@ Point(x=280810182131414898730378982766101210916, y=29150649076805447815983560463
 
 ## Solution
 
+`pohlig.sagews`:
+
+```python
+# Define parameters
+p = 310717010502520989590157367261876774703
+a = 2
+b = 3
+g_x = 179210853392303317793440285562762725654
+g_y = 105268671499942631758568591033409611165
+
+# Create a Finite Field and an Elliptic Curve
+F = FiniteField(p)
+E = EllipticCurve(F, [a, b])
+
+# Define points P and G
+P_x = 280810182131414898730378982766101210916
+P_y = 291506490768054478159835604632710368904
+P = E.point((P_x, P_y))
+
+G = E.point((g_x, g_y))
+
+# Calculate and print the factorization of the elliptic curve group order
+order_factors = factor(E.order())
+print("Factorization of E.order():", order_factors)
+
+# Extract prime factors and their exponents
+factors, exps = zip(*order_factors)
+primes = [factors[i]^exps[i] for i in range(len(factors))]
+print("Prime factors:", primes)
+
+# Calculate discrete logarithms modulo each prime factor
+dlogs = []
+for fac in primes:
+    t = int(G.order() / fac)
+    dlog = discrete_log(t * P, t * G, operation="+")
+    dlogs.append(dlog)
+    print("Factor:", fac, "Discrete Log:", dlog)
+
+# Use Chinese Remainder Theorem (CRT) to combine discrete logs
+n = crt(dlogs, primes)
+
+# Verify if n * G equals P
+is_equal = n * G == P
+print("Is n * G equal to P?", is_equal)
+print("Shared Secret (n):", n)
+```
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
 
 **flag:** `flag`
