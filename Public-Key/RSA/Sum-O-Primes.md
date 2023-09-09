@@ -13,7 +13,6 @@ c = 554b90eb12fbece709d7bf23ab91f9b52d71cd77fbf42f65d68623c2055d99956b9bcf2eaf14
 ```
 
 > Sum-O-Primes
->*(Author: prajnapras19)*
 
 ## Solution
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
