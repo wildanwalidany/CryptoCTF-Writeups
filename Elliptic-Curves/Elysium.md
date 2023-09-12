@@ -48,40 +48,6 @@ Q: (2632668639092844198992643730294836415129818788653622743409084232353833676450
 ```
 
 ## Solution
-
-The challenge provides two files: `main.py` and `result.txt`. The goal is to reverse the encoding performed in `main.py`and retrieve the flag. The encoding function takes a string (data) as input and encodes it using a custom character set and padding scheme. It converts the input string into binary, groups the binary digits into 5-bit chunks, and maps these chunks to characters in the custom character set to produce the encoded result.
-
-To reverse the encoding, we need to remove any padding characters (=) from the end of the encoded string. Map each character in the encoded string back to its corresponding 5-bit binary representation using the custom character set.
-Remove any trailing zeros that were added during encoding. And lasty, convert the resulting binary string into bytes.
-
-To overcome the issue of double quotes `(")` inside a string enclosed by double quotes we can use a backslash (\) before the inner double quotes to indicate that they are part of the string and not the string delimiters
-
-`reverse.py`:
-
-```python
-def decode(encoded_str):
-    charset = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-    padd = "="
-
-    # Remove padding characters from the end
-    while encoded_str.endswith(padd):
-        encoded_str = encoded_str[:-1]
-
-    # Create a binary string by converting characters from the charset back to binary
-    binstr = "".join(format(charset.index(char), "05b") for char in encoded_str)
-
-    # Remove any trailing zeros added during encoding
-    binstr = binstr.rstrip("0")
-
-    # Convert the binary string to bytes
-    decoded_bytes = bytes(int(binstr[i:i+8], 2) for i in range(0, len(binstr), 8))
-
-    return decoded_bytes
-
-# Usage
-encoded_str =  "*&(&)<+$*\"$%+?_?:.,[;[+~+{](+`#%,|![{[*;.]^@}@,>'.:@)_\"<+.:?+`>$'\"#$#`=((|};=="
-decoded_data = decode(encoded_str)
-print(decoded_data.decode())
-```
+<!-- This code section is a work in progress - TODO: Update with the solucion -->
 
 **Flag:** `INTECHFEST{ECC_FUNd4m3nt4l}`
