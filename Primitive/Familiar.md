@@ -41,7 +41,7 @@ print(encode(FLAG.encode()))
 
 ## Solution
 
-The challenge provides two files: `main.py` and `result.txt`. The goal is to reverse the encoding performed in `main.py`and retrieve the flag. The encoding function takes a string (data) as input and encodes it using a custom character set and padding scheme. It converts the input string into binary, groups the binary digits into 5-bit chunks, and maps these chunks to characters in the custom character set to produce the encoded result.
+The encoding function takes a string (data) as input and encodes it using a custom character set and padding scheme. It converts the input string into binary, groups the binary digits into 5-bit chunks, and maps these chunks to characters in the custom character set to produce the encoded result.
 
 To reverse the encoding, we need to remove any padding characters (=) from the end of the encoded string. Map each character in the encoded string back to its corresponding 5-bit binary representation using the custom character set.
 Remove any trailing zeros that were added during encoding. And lasty, convert the resulting binary string into bytes.
