@@ -49,9 +49,9 @@ Q: (2632668639092844198992643730294836415129818788653622743409084232353833676450
 
 ## Solution
 
-In this challenge, we're presented with a point (Q) that has been generated using the addition operation in the add() function. The goal is to reverse this operation and discover the original point (P).
+In this challenge, we're presented with a point (Q) that has been generated using the addition operation in the `add(G, P)` function. The goal is to reverse this operation and discover the original point (P).
 
-The `add(G, P)` function carries out point addition by iteratively adding the generator point $G$ and the point $P$. In elliptic curve cryptography (ECC), these repeated additions are expressed as the multiplication of a point by an integer.We can determine the number of times $G$ and $P$ are repeated by counting the characters in the given input using [character-counter](https://wordcounter.net/character-count).
+The `add(G, P)` function carries out point addition by iteratively adding the generator point $G$ and the point $P$. In elliptic curve cryptography (ECC), these repeated additions are expressed as the multiplication of a point by an integer. We can determine the number of times $G$ and $P$ are repeated by counting the characters in the given input using [character-counter](https://wordcounter.net/character-count).
 ![image](https://github.com/wildanwalidany/CryptoCTF-Writeups/assets/74038077/76da0ad6-6a51-4e11-85c3-910459cbfb68)
 
 Hence, we can interpret the function as $Q = 288*G + 21*P$. Given $Q$, $P$ we can easily retrieve P using $P = Q - 228*G / 21$.
