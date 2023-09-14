@@ -54,7 +54,7 @@ In this challenge, we're presented with a point (Q) that has been generated usin
 The `add(G, P)` function carries out point addition by iteratively adding the generator point $G$ and the point $P$. In elliptic curve cryptography (ECC), these repeated additions are expressed as the multiplication of a point by an integer. We can determine the number of times $G$ and $P$ are repeated by counting the characters in the given input using [character-counter](https://wordcounter.net/character-count).
 ![image](https://github.com/wildanwalidany/CryptoCTF-Writeups/assets/74038077/76da0ad6-6a51-4e11-85c3-910459cbfb68)
 
-Hence, we can interpret the function as $Q = 288 * G + 21 * P$. Given $Q$, $P$ we can easily retrieve P using $P = Q - 228*G / 21$.
+Hence, we can interpret the function as $Q = 288 *G + 21* P$. Given $Q$, $P$ we can easily retrieve P using $P = Q - 228*G / 21$.
 Because the operation is in $GF(P)$, the division is devined as multiplication inverse. In this case, we need to find the multiplication inverse of 21 within the finite field $GF(P)$ to solve the calculation.
 
 ```python
