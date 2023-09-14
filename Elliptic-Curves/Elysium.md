@@ -57,6 +57,8 @@ The `add(G, P)` function carries out point addition by iteratively adding the ge
 Hence, we can interpret the function as $ Q = 288*G + 21*P $. Given $Q$, $P$ we can easily retrieve P using $P = Q - 228*G / 21$.
 Because the operation is in $GF(P)$, the division is devined as multiplication inverse. In this case, we need to find the multiplication inverse of 21 within the finite field $GF(P)$ to solve the calculation.
 
+`solver.py`:
+
 ```python
 from Crypto.Util.number import bytes_to_long, long_to_bytes
 from sage.all import *
