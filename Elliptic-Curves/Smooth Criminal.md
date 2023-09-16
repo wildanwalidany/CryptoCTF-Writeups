@@ -237,4 +237,4 @@ print(flag)
 ```
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
 
-**flag:** `flag`
+**flag:** `crypto{n07_4ll_curv3s_4r3_s4f3_curv3s}`
