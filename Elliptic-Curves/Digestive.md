@@ -64,7 +64,7 @@ def verify(msg, signature):
 
 ## Solution
 
-According to <https://stackoverflow.com/questions/67543512/ecdsa-signing-verifiying-appears-to-be-only-considering-the-first-32-bytes-of-th>, only considering the first 32 bytes of the data. This is because ecdsa assume that hash of the data that will be signed. In this case, the data is not hased, so we can modify the data after the first 32 bytes.
+According to <https://stackoverflow.com/questions/67543512/ecdsa-signing-verifiying-appears-to-be-only-considering-the-first-32-bytes-of-th>, ecdsa only considering the first 32 bytes of the data. This is because ecdsa assume that hash of the data that will be signed. In this case, the data is not hased, so we can modify the data after the first 32 bytes.
 We need to change the `"admin": false` to `"admin": true`. It can be done according to <https://stackoverflow.com/questions/5306741/do-json-keys-need-to-be-unique#:~:text=There%20is%20no%20%22error%22%20if,is%20going%20to%20be%20used> by adding the same key after the first 32 bytes.
 
 `test.py`:
