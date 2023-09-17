@@ -76,30 +76,30 @@ import requests
 SK = SigningKey.generate()  # uses NIST192p
 VK = SK.verifying_key
 
-
 def sign(username):
     r = requests.get(f"https://web.cryptohack.org/digestive/sign/{username}/")
     return json.loads(r.text)
-
 
 def verify(msg, signature):
     r = requests.get(f"https://web.cryptohack.org/digestive/verify/{msg}/{signature}/")
     return r.text
 
-
 username = "jack"
 data = sign(username)
 print(data)
-msg = data["msg"]
-print('msg', msg)
+msg1 = data["msg"]
+print('msg', msg1)
 signature = data["signature"]
-digest = normalise_bytes(msg.encode())
-print(_truncate_and_convert_digest(digest, SK.curve, True))
-msg = "{\"admin\": false, \"username\": \"jack\", \"admin\": true}"
-print('msg', msg)
-digest = normalise_bytes(msg.encode())
-print(_truncate_and_convert_digest(digest, SK.curve, True))
-print(verify(msg, signature))
+digest1 = normalise_bytes(msg1.encode())
+
+msg2 = "{\"admin\": false, \"username\": \"jack\", \"admin\": true}"
+print('msg', msg2)
+digest2 = normalise_bytes(msg2.encode())
+
+if _truncate_and_convert_digest(digest1, SK.curve, True) == _truncate_and_convert_digest(digest2, SK.curve, True):
+    print(verify(msg2, signature))
+else:
+    print('Digest1 and Digest2 are different ')
 ```
 
 **flag:** `flag`
