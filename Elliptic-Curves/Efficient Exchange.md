@@ -53,5 +53,16 @@ print(decrypt_flag(shared_secret, iv, ciphertext))
 ## Solution
 
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
+`solver.sage`:
+
+```python
+E = EllipticCurve(GF(9739), [497, 1768])
+
+q_x = 4726
+P = E.lift_x(q_x)
+
+# print(shared secret)
+print('shared key', str((6534*P)[0]))
+```
 
 **flag:** `flag`
