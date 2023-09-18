@@ -11,5 +11,15 @@ Platform: Cryptohack
 ## Solution
 
 <!-- This code section is a work in progress - TODO: Update with the solucion -->
+`solver.py`:
+
+```python
+# solver by epistemologist
+# Not reinventing the wheel, doing this in Sage
+from hashlib import sha1
+E = EllipticCurve(GF(9739),[497,1768])
+P = E(815, 3190)
+print(sha1(str((1829*P)[0]).encode()).hexdigest())
+```
 
 **flag:** `flag`
