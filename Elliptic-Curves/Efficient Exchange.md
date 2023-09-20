@@ -65,4 +65,4 @@ P = E.lift_x(q_x)
 print('shared key', str((6534*P)[0]))
 ```
 
-**flag:** `flag`
+**flag:** `crypto{3ff1c1ent_k3y_3xch4ng3}`
