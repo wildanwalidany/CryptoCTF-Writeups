@@ -52,7 +52,8 @@ print(decrypt_flag(shared_secret, iv, ciphertext))
 
 ## Solution
 
-<!-- This code section is a work in progress - TODO: Update with the solucion -->
+To calculate the shared secret key, we can use the provided elliptic curve, prime, and generator values along with the information sent by Alice ($q_x=4726$ and $n_B=6534$). The key is to calculate $n_BP$, where $P$ is the point on the curve with x-coordinate $q_x$. The shared secret key is the x-coordinate of $n_BP$.
+
 `solver.sage`:
 
 ```python
