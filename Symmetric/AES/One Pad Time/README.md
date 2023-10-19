@@ -18,6 +18,8 @@ We know from the source code of the challenge that the padding is done after the
 
 PKCS7 padding adds bytes to the end of the plaintext in such a way that each byte added contains the value of the total number of bytes added. Because the ciphertext has correct padding of 16 bytes, when we pad again the added bytes will 16 bytes of `0x10`.
 
+The hint given was ciphertext xor'ed with the key. So we can retrieve the key back by xor-ing it back with the known plaintext that is the padding at the back. Finally we can get the original ciphertext by xor-ing it with the key and use the key to decrypt the ciphertext.
+
 TODO: retrieve the key
 `solver`:
 
