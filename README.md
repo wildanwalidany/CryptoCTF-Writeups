@@ -1,6 +1,6 @@
 # CryptoCTF-Writeups
 
-A collection of my writeups for various cryptography challenges from CTF competitions and learning platforms.
+A collection of my writeups and personal notes for various cryptography challenges from CTF competitions and learning platforms.
 
 ## Category
 
